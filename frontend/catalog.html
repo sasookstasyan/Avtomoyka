@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff8f5" />
+    <meta name="description" content="Торты, бенто, капкейки и десерты «Енот-сладкоежки» в Иванове и Кохме. Посмотрите меню и уточните заказ в VK." />
+    <title>Торты и десерты — Енот-сладкоежка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <script type="module" src="/js/catalog.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Енот-сладкоежка — главная"><span class="brand-symbol" aria-hidden="true"><img src="/images/raccoon-mascot.svg" alt="" /></span><span class="brand-copy"><strong>Енот-сладкоежка</strong><small>торты · Иваново и Кохма</small></span></a>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span></button>
+        <nav class="site-nav" id="site-navigation" aria-label="Главная навигация"><a href="/">Главная</a><a class="is-current" href="/catalog.html">Каталог</a><a href="/#about">О нас</a><a href="/#delivery">Доставка</a><a href="/#contacts">Контакты</a><a class="nav-order" href="#catalog-products">Выбрать торт <span aria-hidden="true">↗</span></a></nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero section-wrap">
+        <div class="breadcrumbs"><a href="/">Главная</a><span>/</span><span>Каталог</span></div>
+        <div class="catalog-heading"><div><span class="eyebrow">Ассортимент сообщества VK</span><h1>Выбирайте<br /><em>сладкое.</em></h1></div><p>Торты, бенто и десерты к чаю. Выберите позицию, а оформление и детали заказа обсудите напрямую с Ксенией.</p></div>
+        <div class="catalog-decoration" aria-hidden="true">✳</div>
+      </section>
+
+      <section class="catalog-content section-wrap" id="catalog-products">
+        <div class="catalog-toolbar">
+          <div class="catalog-filters" role="group" aria-label="Категория товара"><button class="catalog-filter is-active" type="button" data-filter="all" aria-pressed="true">Все сладости</button><button class="catalog-filter" type="button" data-filter="cakes" aria-pressed="false">Торты</button><button class="catalog-filter" type="button" data-filter="small" aria-pressed="false">Порционные</button></div>
+          <label class="catalog-search"><span class="visually-hidden">Поиск товаров</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg><input id="product-search" type="search" placeholder="Найти десерт" autocomplete="off" /><button id="product-search-clear" type="button" aria-label="Очистить поиск" hidden>×</button></label>
+        </div>
+        <div class="catalog-meta"><span id="catalog-count" aria-live="polite">Загружаем меню…</span><span>Цены из каталога VK; вес, декор и актуальную стоимость уточняйте при заказе</span></div>
+        <div class="product-grid catalog-grid" id="catalog-grid" aria-live="polite"></div>
+        <div class="empty-state" id="catalog-empty" hidden><span aria-hidden="true">✿</span><h2>Пока ничего не нашли</h2><p>Попробуйте изменить поиск или выбрать другую категорию.</p><button type="button" class="text-button" id="reset-catalog">Сбросить фильтры</button></div>
+        <div class="catalog-order-note"><span class="note-icon">🦝</span><p><strong>Хотите обсудить свой торт?</strong><br />Напишите Ксении — согласуйте вкус, оформление и дату. <a href="https://vk.ru/enotsladkoegka37" target="_blank" rel="noreferrer">Открыть сообщество VK ↗</a></p></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-main section-wrap"><a class="brand footer-brand" href="/"><span class="brand-symbol" aria-hidden="true"><img src="/images/raccoon-mascot.svg" alt="" /></span><span class="brand-copy"><strong>Енот-сладкоежка</strong><small>торты · Иваново и Кохма</small></span></a><span class="footer-motto">Пусть день будет чуточку слаще.</span><nav aria-label="Навигация в подвале"><a href="/">Главная</a><a href="/#about">О нас</a><a href="/#delivery">Доставка</a><a href="/#contacts">Контакты</a><a href="https://vk.ru/enotsladkoegka37" target="_blank" rel="noreferrer">Мы в VK ↗</a></nav></div><div class="footer-bottom section-wrap"><span>© <span id="current-year"></span> «Енот-сладкоежка»</span><a href="/admin" target="_blank" rel="noreferrer">Панель управления ↗</a></div></footer>
+
+    <dialog class="modal" id="product-modal"><button class="modal-close" type="button" data-close-modal aria-label="Закрыть">×</button><div id="product-modal-content"></div></dialog>
+    <dialog class="modal order-modal" id="order-modal"><button class="modal-close" type="button" data-close-modal aria-label="Закрыть">×</button><span class="eyebrow">Заказ десерта</span><h2>Порадуем <em>вкусным.</em></h2><p class="modal-lead">Оставьте контакты — мы скоро свяжемся и обсудим детали.</p><form id="order-form"><label class="form-field">Ваше имя<input name="customer_name" type="text" minlength="2" maxlength="100" autocomplete="name" required placeholder="Как к вам обращаться?" /></label><label class="form-field">Телефон<input name="phone" type="tel" autocomplete="tel" required maxlength="25" placeholder="+7 (___) ___-__-__" /></label><label class="form-field">Выберите десерт<select name="product_id" id="order-product" required></select></label><label class="form-field">Количество<input name="quantity" type="number" min="1" max="20" step="1" value="1" required /></label><label class="form-field">Комментарий<textarea name="comment" maxlength="1000" rows="3" placeholder="Повод, дата или пожелания (необязательно)"></textarea></label><button class="button button-dark form-submit" type="submit">Отправить заказ <span aria-hidden="true">↗</span></button><p class="form-message" id="order-message" aria-live="polite"></p><small class="form-privacy">Отправляя форму, вы соглашаетесь на обработку контактных данных для оформления заказа.</small></form></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

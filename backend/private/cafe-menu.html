@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#522d3a">
+  <title>Редактор меню кафе — админ-панель</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/central-admin.css">
+  <link rel="stylesheet" href="/css/cafe-menu-admin.css">
+  <script type="module" src="/js/cafe-menu-admin.js"></script>
+</head>
+<body class="cafe-menu-admin">
+  <header class="menu-admin-header">
+    <a class="menu-back" href="/admin">← <span>Админ-панель</span></a>
+    <div class="menu-admin-brand"><span class="menu-flower">✿</span><span><small>КАФЕ «МАРУСЯ»</small><strong>Редактор меню</strong></span></div>
+    <a class="menu-public-link" href="/marusya" target="_blank" rel="noreferrer">Публичная страница ↗</a>
+  </header>
+  <main class="menu-admin-main">
+    <section class="menu-admin-intro">
+      <div><span class="admin-kicker">ЗАКРЫТЫЙ РАЗДЕЛ · ТОЛЬКО ДЛЯ АДМИНИСТРАТОРА</span><h1>Меню кафе<br><em>на виду.</em></h1><p>Просматривайте каталог так, как он опубликован в кафе, и редактируйте позиции прямо здесь. Изменения сохраняются в SQLite и сразу видны на странице «Маруся».</p></div>
+      <div class="menu-admin-count"><span id="menu-count">—</span><small>позиций меню</small></div>
+    </section>
+    <div class="menu-admin-toolbar"><div class="menu-admin-filters" id="menu-admin-filters" aria-label="Фильтр категорий"></div><button class="admin-button menu-add-button" id="add-item" type="button">＋ Добавить блюдо</button></div>
+    <p class="menu-admin-notice" id="menu-notice" role="status" aria-live="polite">Загружаем меню…</p>
+    <section class="menu-admin-grid" id="menu-admin-grid" aria-live="polite"></section>
+    <aside class="menu-admin-note"><strong>Демонстрационные данные:</strong> позиции и цены с меткой «ТЕСТ» — примеры, а не подтверждённое меню кафе. Измените их на согласованные с владельцем данные или удалите.</aside>
+  </main>
+  <dialog class="menu-item-dialog" id="menu-item-dialog">
+    <button class="dialog-x" type="button" data-close aria-label="Закрыть">×</button>
+    <span class="admin-kicker">КАФЕ «МАРУСЯ» · МЕНЮ</span>
+    <h2 id="menu-form-title">Добавить блюдо</h2>
+    <form class="menu-item-form" id="menu-item-form">
+      <input type="hidden" name="id">
+      <label>Название<input name="name" required minlength="2" maxlength="120" placeholder="Название блюда"></label>
+      <label>Описание<textarea name="description" rows="3" maxlength="2000" placeholder="Состав или короткое описание"></textarea></label>
+      <div class="menu-form-row">
+        <label>Цена, ₽<input name="price" type="number" min="0" max="10000000" step="0.01" required></label>
+        <label>Категория<select name="category" required></select></label>
+      </div>
+      <label>Фотография — HTTPS-ссылка<input name="image" type="url" placeholder="https://..."></label>
+      <div class="menu-form-flags">
+        <label><input name="available" type="checkbox" checked> Есть в наличии</label>
+        <label><input name="test_data" type="checkbox" checked> Тестовая позиция / цена</label>
+      </div>
+      <p class="menu-form-message" id="menu-form-message" aria-live="polite"></p>
+      <div class="menu-form-actions"><button class="admin-button menu-add-button" type="submit">Сохранить</button><button class="admin-button secondary" type="button" data-close>Отмена</button></div>
+    </form>
+  </dialog>
+  <div class="admin-toast" id="menu-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
