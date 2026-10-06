@@ -123,3 +123,5 @@ database/
 store. Перед эксплуатацией смените тестовые учётные данные, включите HTTPS,
 задайте production session secret и настройте резервное копирование
 `database/shop.db`.
+#   A v t o m o y k a  
+ 
